@@ -1,0 +1,48 @@
+# PrasaGIS-Web
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>giswithprasa</title>
+    <!-- Link to Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <style>
+        /* Set the map size */
+        #map {
+            height: 600px;
+            width: 100%;
+        }
+    </style>
+    <!-- Leaflet Geocoder CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+</head>
+<body>
+    <h1>OpenStreetMap🌎--GISwithPrasa😎</h1>
+    <div id="map"></div>
+
+    <!-- Link to Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Leaflet Geocoder JS -->
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+    <script>
+        // Initialize the map and set the view to a location (latitude, longitude) and zoom level
+        var map = L.map('map').setView([6.9271, 79.8612], 13); // Coordinates for Colombo, Sri Lanka
+
+        // Add a tile layer to the map (OpenStreetMap in this case)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Add a marker to the map
+        var marker = L.marker([6.9271, 79.8612]).addTo(map);
+        marker.bindPopup("<b>Colombo</b>").openPopup();
+
+        // Add a search bar using Leaflet-Control-Geocoder
+        L.Control.geocoder({
+            defaultMarkGeocode: true
+        }).addTo(map);
+    </script>
+</body>
+</html>
+
